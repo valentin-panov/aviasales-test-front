@@ -1,6 +1,6 @@
-import React, { ChangeEvent, memo, useEffect, useMemo, useState } from 'react';
-import cn from 'clsx';
-import { shallowEqual, useSelector } from 'react-redux';
+import React, { ChangeEvent, memo, useEffect, useMemo, useState } from 'react'
+import cn from 'clsx'
+import { shallowEqual, useSelector } from 'react-redux'
 import {
   CircularProgress,
   FormControl,
@@ -8,62 +8,70 @@ import {
   MenuItem,
   Pagination,
   Select,
-  SelectChangeEvent,
-} from '@mui/material';
-import s from './Output.module.scss';
-import { RootState } from '../../store';
-import ZeroFound from '../ZeroFound/ZeroFound';
-import { CardElement } from '../CardElement';
-import { InPicture } from '../../interfaces/Interfaces';
+  SelectChangeEvent
+} from '@mui/material'
+import s from './Output.module.scss'
+import { RootState } from '../../store'
+import ZeroFound from '../ZeroFound/ZeroFound'
+import { CardElement } from '../CardElement'
+import { InPicture } from '../../interfaces/Interfaces'
 
 export type Props = {
-  className?: string;
-};
+  className?: string
+}
 
 export const Output = memo<Props>(({ className }) => {
-  const imagesStore = useSelector((store: RootState) => store.pictures, shallowEqual);
-  const { status, pictures } = imagesStore;
-  const [page, setPage] = useState<number>(1);
-  const [albumId, setAlbumId] = useState<number | string>('');
-  const [pagesCount, setPagesCount] = useState<number>(0);
-  const [filteredPicsArray, setFilteredPicsArray] = useState<InPicture[]>([]);
-  const [slicedPicsArray, setSlicedPicsArray] = useState<InPicture[]>([]);
+  const imagesStore = useSelector(
+    (store: RootState) => store.pictures,
+    shallowEqual
+  )
+  const { status, pictures } = imagesStore
+  const [page, setPage] = useState<number>(1)
+  const [albumId, setAlbumId] = useState<number | string>('')
+  const [pagesCount, setPagesCount] = useState<number>(0)
+  const [filteredPicsArray, setFilteredPicsArray] = useState<InPicture[]>([])
+  const [slicedPicsArray, setSlicedPicsArray] = useState<InPicture[]>([])
 
-  const picsPerPage = 12;
+  const picsPerPage = 12
 
   const handlePageChange = (event: ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-  };
+    setPage(value)
+  }
 
-  const albumsIdSet = new Set<number>();
-  pictures.forEach((el) => albumsIdSet.add(el.albumId));
-  const albumsIdArray = Array.from(albumsIdSet);
+  const albumsIdSet = new Set<number>()
+  pictures.forEach((el) => albumsIdSet.add(el.albumId))
+  const albumsIdArray = Array.from(albumsIdSet)
 
   const handleChangeSelectAlbumId = (event: SelectChangeEvent) => {
-    setAlbumId(event.target.value as unknown as number);
-  };
+    setAlbumId(event.target.value as unknown as number)
+  }
   useMemo(() => {
     setFilteredPicsArray(
       pictures.filter((el) => {
         if (albumId !== '') {
-          return el.albumId === albumId;
+          return el.albumId === albumId
         }
-        return true;
+        return true
       })
-    );
-  }, [albumId, pictures]);
+    )
+  }, [albumId, pictures])
 
   useMemo(() => {
-    setSlicedPicsArray(filteredPicsArray.slice(page * picsPerPage - picsPerPage, page * picsPerPage));
-    setPagesCount(Math.ceil(filteredPicsArray.length / picsPerPage));
+    setSlicedPicsArray(
+      filteredPicsArray.slice(
+        page * picsPerPage - picsPerPage,
+        page * picsPerPage
+      )
+    )
+    setPagesCount(Math.ceil(filteredPicsArray.length / picsPerPage))
     if (slicedPicsArray.length < 1 && page > 1) {
-      setPage(pagesCount);
+      setPage(pagesCount)
     }
-  }, [filteredPicsArray, page, slicedPicsArray.length, pagesCount]);
+  }, [filteredPicsArray, page, slicedPicsArray.length, pagesCount])
 
   useEffect(() => {
-    setPage(1);
-  }, [albumId]);
+    setPage(1)
+  }, [albumId])
 
   return (
     <>
@@ -72,7 +80,9 @@ export const Output = memo<Props>(({ className }) => {
         {status === 'success' && pictures.length > 0 && (
           <>
             <div className={s.controls}>
-              <div className={s.controlsExplanation}>Select pictures from album by ID</div>
+              <div className={s.controlsExplanation}>
+                Select pictures from album by ID
+              </div>
               <FormControl className={s.formControl}>
                 <InputLabel id="selectAlbumIdLabel">Album ID</InputLabel>
                 <Select
@@ -89,7 +99,11 @@ export const Output = memo<Props>(({ className }) => {
                   ))}
                 </Select>
               </FormControl>
-              <Pagination count={pagesCount} page={page} onChange={handlePageChange} />
+              <Pagination
+                count={pagesCount}
+                page={page}
+                onChange={handlePageChange}
+              />
             </div>
             <div className={s.cardsContainer}>
               {slicedPicsArray.map((el) => (
@@ -101,5 +115,7 @@ export const Output = memo<Props>(({ className }) => {
         {status === 'success' && pictures.length === 0 && <ZeroFound />}
       </div>
     </>
-  );
-});
+  )
+})
+
+Output.displayName = 'Output'

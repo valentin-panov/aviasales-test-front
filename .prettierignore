@@ -1,0 +1,7 @@
+.next
+.node_modules
+.eslintrc.js
+.gitignore
+.github
+yarn.lock
+.github

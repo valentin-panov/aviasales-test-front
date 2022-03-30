@@ -1,10 +1,9 @@
 @import 'src/styles/common';
 
 .root {
-  min-height: 100%;
-  flex: 1 1 auto;
-  background: #E5E5E5;
   align-items: center;
-  justify-content: center;
+  flex: 1 1 auto;
   flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
 }

@@ -1,14 +1,21 @@
 @import 'src/styles/common';
 
 .root {
-  margin: 0;
-  padding: 15px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-grow: 0;
-  box-sizing: border-box;
   flex-direction: column;
+  flex-grow: 0;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 15px;
   color: #ffffff;
-  background: $footer-bg;
+  background: transparent;
+
+  .link {
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+  }
 }

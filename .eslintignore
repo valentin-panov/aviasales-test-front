@@ -1,7 +1,8 @@
-server.js
-docs
-dist
-node_modules
-src/graphql.main.types.tsx
-src/graphql.user.types.tsx
-jestSetupFile.js
+*.json
+*.md
+*.lock
+*.yml
+*.scss
+*.spec.js
+/node_modules/*
+/public/*

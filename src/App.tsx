@@ -4,7 +4,7 @@ import { Main } from './components/Main';
 import { Layout } from './components/Layout';
 import { Output } from './components/Output';
 
-export const serverURL = 'https://front-test.beta.aviasales.ru/';
+export const serverURL = 'https://jsonplaceholder.typicode.com/photos';
 
 function App(): ReactElement {
   return (
