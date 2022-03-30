@@ -25,8 +25,8 @@
 
   &:hover {
     transition: 0.2s ease-out;
+    transform: scale(1.2);
     box-shadow: 0 8px 11px rgba(55, 104, 142, 0.25);
-
   }
 
   &_img {
@@ -34,5 +34,9 @@
     top: -10px;
     right: -12px;
 
+    &:hover {
+      transition: 0.2s ease-out;
+      transform: scale(1.2) rotate(360deg);
+    }
   }
 }

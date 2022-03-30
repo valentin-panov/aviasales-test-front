@@ -1,6 +1,6 @@
 // Reducers
-import { pictures } from './pictures';
+import { tickets } from './tickets'
 
 export const rootReducer = {
-  pictures,
-};
+  tickets
+}

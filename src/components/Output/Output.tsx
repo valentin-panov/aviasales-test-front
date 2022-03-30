@@ -14,7 +14,7 @@ import s from './Output.module.scss'
 import { RootState } from '../../store'
 import ZeroFound from '../ZeroFound/ZeroFound'
 import { CardElement } from '../CardElement'
-import { InPicture } from '../../interfaces/Interfaces'
+import { InTicket } from '../../interfaces/Interfaces'
 
 export type Props = {
   className?: string
@@ -22,15 +22,15 @@ export type Props = {
 
 export const Output = memo<Props>(({ className }) => {
   const imagesStore = useSelector(
-    (store: RootState) => store.pictures,
+    (store: RootState) => store.tickets,
     shallowEqual
   )
-  const { status, pictures } = imagesStore
+  const { status, tickets } = imagesStore
   const [page, setPage] = useState<number>(1)
   const [albumId, setAlbumId] = useState<number | string>('')
   const [pagesCount, setPagesCount] = useState<number>(0)
-  const [filteredPicsArray, setFilteredPicsArray] = useState<InPicture[]>([])
-  const [slicedPicsArray, setSlicedPicsArray] = useState<InPicture[]>([])
+  const [filteredPicsArray, setFilteredPicsArray] = useState<InTicket[]>([])
+  const [slicedPicsArray, setSlicedPicsArray] = useState<InTicket[]>([])
 
   const picsPerPage = 12
 
@@ -39,7 +39,7 @@ export const Output = memo<Props>(({ className }) => {
   }
 
   const albumsIdSet = new Set<number>()
-  pictures.forEach((el) => albumsIdSet.add(el.albumId))
+  tickets.forEach((el) => albumsIdSet.add(el.albumId))
   const albumsIdArray = Array.from(albumsIdSet)
 
   const handleChangeSelectAlbumId = (event: SelectChangeEvent) => {
@@ -47,14 +47,14 @@ export const Output = memo<Props>(({ className }) => {
   }
   useMemo(() => {
     setFilteredPicsArray(
-      pictures.filter((el) => {
+      tickets.filter((el) => {
         if (albumId !== '') {
           return el.albumId === albumId
         }
         return true
       })
     )
-  }, [albumId, pictures])
+  }, [albumId, tickets])
 
   useMemo(() => {
     setSlicedPicsArray(
@@ -77,7 +77,7 @@ export const Output = memo<Props>(({ className }) => {
     <>
       <div className={cn(s.root, className)}>
         {status === 'pending' && <CircularProgress />}
-        {status === 'success' && pictures.length > 0 && (
+        {status === 'success' && tickets.length > 0 && (
           <>
             <div className={s.controls}>
               <div className={s.controlsExplanation}>
@@ -112,7 +112,7 @@ export const Output = memo<Props>(({ className }) => {
             </div>
           </>
         )}
-        {status === 'success' && pictures.length === 0 && <ZeroFound />}
+        {status === 'success' && tickets.length === 0 && <ZeroFound />}
       </div>
     </>
   )
