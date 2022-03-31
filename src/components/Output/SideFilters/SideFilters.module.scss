@@ -1,0 +1,30 @@
+@import 'src/styles/common';
+
+.root {
+  font-size: 13px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  padding: 20px;
+  color: #4A4A4A;
+
+  .sideFilters_title {
+    font-size: 12px;
+    font-weight: 600;
+    font-style: normal;
+    line-height: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    color: #4A4A4A;
+  }
+
+  .item .MuiFormControlLabel-label {
+    font-size: 13px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20px;
+
+    color: #4A4A4A;
+  }
+}

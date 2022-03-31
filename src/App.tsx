@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
-import './styles/common.scss';
-import { Main } from './components/Main';
-import { Layout } from './components/Layout';
-import { Output } from './components/Output';
+import React, { ReactElement } from 'react'
+import './styles/common.scss'
+import { Main } from './components/Main'
+import { Layout } from './components/Layout'
+import { Output } from './components/Output'
 
-export const serverURL = 'https://jsonplaceholder.typicode.com/photos';
+export const serverURL = 'https://front-test.beta.aviasales.ru'
 
 function App(): ReactElement {
   return (
@@ -13,7 +13,7 @@ function App(): ReactElement {
         <Output />
       </Main>
     </Layout>
-  );
+  )
 }
 
-export default App;
+export default App
