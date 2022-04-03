@@ -8,6 +8,7 @@ import ZeroFound from '../ZeroFound/ZeroFound'
 import Error404 from '../Error404/Error404'
 import SideFilters from './SideFilters/SideFilters'
 import TopFilters from './TopFilters/TopFilters'
+import { TicketList } from './TicketList'
 
 export type Props = {
   className?: string
@@ -31,7 +32,7 @@ export const Output = memo<Props>(({ className }) => {
         </div>
         <div className={s.tickets}>
           {status === 'pending' && <CircularProgress />}
-          {status === 'success' && tickets.length > 0 && <>DATA</>}
+          {status === 'success' && tickets.length > 0 && <TicketList />}
           {status === 'success' && tickets.length === 0 && <ZeroFound />}
           {status === 'error' && <Error404 />}
         </div>

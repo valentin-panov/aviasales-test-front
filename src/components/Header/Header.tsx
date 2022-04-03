@@ -1,10 +1,8 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 import cn from 'clsx'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import s from './Header.module.scss'
 import plane from '../../../src/img/btnPlane.png'
-import { tokenFetch } from '../../reducers/token'
-import { RootState } from '../../store'
 import { ticketsFetch } from '../../reducers/tickets'
 
 export type Props = {
@@ -13,19 +11,10 @@ export type Props = {
 
 export const Header = memo<Props>(({ className }) => {
   const dispatch = useDispatch()
-  const { token } = useSelector((store: RootState) => store.token, shallowEqual)
 
   const getTicket = () => {
-    if (token) {
-      dispatch(ticketsFetch(token))
-    }
+    dispatch(ticketsFetch())
   }
-
-  useEffect(() => {
-    if (!token) {
-      dispatch(tokenFetch())
-    }
-  }, [dispatch, token])
 
   return (
     <header className={cn(s.root, className)}>

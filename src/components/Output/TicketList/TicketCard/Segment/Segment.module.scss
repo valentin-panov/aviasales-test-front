@@ -1,0 +1,97 @@
+@import 'src/styles/common';
+
+.root {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+'route durationTitle switchesCount'
+'date duration switchesList';
+}
+
+
+.route {
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 18px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #A0B0B9;
+
+  grid-area: route;
+}
+
+.durationTitle {
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 18px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #A0B0B9;
+
+  grid-area: durationTitle;
+}
+
+.switchesCount {
+  font-size: 12px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 18px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #A0B0B9;
+
+  /* Primary Colors/Secondary Content */
+  grid-area: switchesCount;
+}
+
+.date {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 21px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  color: #4A4A4A;
+
+  grid-area: date;
+}
+
+.duration {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 21px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  color: #4A4A4A;
+
+  grid-area: duration;
+}
+
+.switchesList {
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 21px;
+  display: flex;
+  /* identical to box height, or 150% */
+  align-items: center;
+  color: #4A4A4A;
+
+  /* Frequently Used/Primary Content */
+  grid-area: switchesList;
+}

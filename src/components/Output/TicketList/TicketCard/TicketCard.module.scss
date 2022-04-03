@@ -1,0 +1,56 @@
+@import 'src/styles/common';
+
+.root {
+  display: grid;
+  align-items: center;
+  box-sizing: border-box;
+  width: 500px;
+  height: 185px;
+  margin: 0;
+  padding: 22px 20px 18px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 36px 1fr;
+  row-gap: 15px;
+  grid-template-areas:
+          'price carrier'
+          'segments segments';
+
+  &:hover {
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  }
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 24px;
+  color: #2196F3;
+
+  /* Primary Colors/Primary 500 */
+  grid-area: price;
+}
+
+.carrier {
+  grid-area: carrier;
+  justify-self: flex-end;
+
+  &_img {
+    max-height: 135px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.segments {
+  display: flex;
+  flex-direction: column;
+  grid-area: segments;
+  gap: 10px;
+}
+

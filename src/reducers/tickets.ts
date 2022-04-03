@@ -14,7 +14,7 @@ const initialState: InTickets = {
 const getTickets = async (reqURL: string): Promise<InTicket[]> => {
   const response = await fetch(reqURL)
   if (!response.ok) {
-    // throw new Error(`request error. request url: ${reqURL}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
+    // throw new Error(`${response.status}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
     return getTickets(reqURL)
   }
   const result = await response.json()
@@ -27,9 +27,17 @@ const getTickets = async (reqURL: string): Promise<InTicket[]> => {
 
 export const ticketsFetch = createAsyncThunk(
   'tickets/FetchingData',
-  async (token: string) => {
-    const reqURL = `${serverURL}/tickets?searchId=${token}`
-    return await getTickets(reqURL)
+  async () => {
+    const tokenURL = `${serverURL}/search`
+    const tokenResponse = await fetch(tokenURL)
+    if (!tokenResponse.ok) {
+      throw new Error(`request error: ${tokenURL}`)
+    }
+    const tokenResult = await tokenResponse.json()
+    const token = tokenResult.searchId
+
+    const ticketsURL = `${serverURL}/tickets?searchId=${token}`
+    return await getTickets(ticketsURL)
   }
 )
 
@@ -37,10 +45,9 @@ export const ticketsSlice = createSlice({
   name: 'tickets',
   initialState,
   reducers: {
-    // pictureRemove: (state, action: PayloadAction<InTicket>) => {
-    //   const { id } = action.payload
-    //   state.tickets = state.tickets.filter((entry) => entry.id !== id)
-    // }
+    ticketsErrorRemove: (state) => {
+      state.error = ''
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(ticketsFetch.pending, (state) => {
@@ -61,6 +68,6 @@ export const ticketsSlice = createSlice({
   }
 })
 
-// export const { pictureRemove } = ticketsSlice.actions
+export const { ticketsErrorRemove } = ticketsSlice.actions
 
 export const tickets = ticketsSlice.reducer
