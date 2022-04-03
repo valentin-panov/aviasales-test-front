@@ -33,3 +33,18 @@ export interface InTicket {
 export interface InTickets extends Status {
   tickets: InTicket[]
 }
+
+export interface InFilter {
+  s0: boolean
+  s1: boolean
+  s2: boolean
+  s3: boolean
+}
+
+export type InSort = 'price' | 'time' | 'optimal'
+
+export interface InFilters {
+  filter: InFilter
+  sort: InSort
+  limit: number
+}

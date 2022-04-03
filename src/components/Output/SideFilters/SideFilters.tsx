@@ -1,23 +1,50 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import s from './SideFilters.module.scss'
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
+import { InFilter } from '../../../interfaces/Interfaces'
+import { useDispatch } from 'react-redux'
+import { setFiltersFilter } from '../../../reducers/filters'
 
 export default function SideFilters(): ReactElement {
-  const [state, setState] = useState({
-    all: true,
-    s0: false,
-    s1: false,
-    s2: false,
-    s3: false
+  const dispatch = useDispatch()
+  const [filters, setFilters] = useState<InFilter>({
+    s0: true,
+    s1: true,
+    s2: true,
+    s3: true
   })
+  const [all, setAll] = useState<boolean>(true)
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setState({
-      ...state,
-      [event.target.name]: event.target.checked
-    })
+    if (event.target.name !== 'all' && !event.target.checked) {
+      setFilters({
+        ...filters,
+        [event.target.name]: event.target.checked
+      })
+      setAll(false)
+    } else if (event.target.name === 'all' && event.target.checked) {
+      setAll(true)
+      setFilters({
+        s0: true,
+        s1: true,
+        s2: true,
+        s3: true
+      }) // здесь должно быть более красивое решение, но время поджимает
+    } else {
+      if (event.target.name !== 'all') {
+        setFilters({
+          ...filters,
+          [event.target.name]: event.target.checked
+        })
+      }
+    }
   }
 
-  const { all, s0, s1, s2, s3 } = state
+  useEffect(() => {
+    dispatch(setFiltersFilter(filters))
+  }, [dispatch, filters])
+
+  const { s0, s1, s2, s3 } = filters
 
   return (
     <section className={s.root}>
