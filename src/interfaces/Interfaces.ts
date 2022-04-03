@@ -44,5 +44,4 @@ export interface InTicket {
 
 export interface InTickets extends Status {
   tickets: InTicket[]
-  stop: boolean
 }

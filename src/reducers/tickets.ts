@@ -1,30 +1,35 @@
 /* eslint-disable no-param-reassign */
 
 // Core
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
-
-// Interfaces
-import {InTickets} from '../interfaces/Interfaces'
-
-// Server
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit' // Interfaces
+import {InTicket, InTickets} from '../interfaces/Interfaces' // Server
 import {serverURL} from '../App'
 
 const initialState: InTickets = {
   status: 'idle',
   error: '',
-  tickets: [],
-  stop: false
+  tickets: []
+}
+
+const getTickets = async (reqURL: string): Promise<InTicket[]> => {
+  const response = await fetch(reqURL)
+  if (!response.ok) {
+    // throw new Error(`request error. request url: ${reqURL}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
+    return getTickets(reqURL)
+  }
+  const result = await response.json()
+  if (result.stop === false) {
+    return getTickets(reqURL)
+  } else {
+    return result.tickets
+  }
 }
 
 export const ticketsFetch = createAsyncThunk(
   'tickets/FetchingData',
   async (token: string) => {
-    const reqURL = `${serverURL}/tickets?token=${token}`
-    const response = await fetch(reqURL)
-    if (!response.ok) {
-      throw new Error(`request error. request url: ${reqURL}`)
-    }
-    return response.json()
+    const reqURL = `${serverURL}/tickets?searchId=${token}`
+    return await getTickets(reqURL)
   }
 )
 
@@ -44,9 +49,8 @@ export const ticketsSlice = createSlice({
     })
     builder.addCase(
       ticketsFetch.fulfilled,
-      (state, action: PayloadAction<InTickets>) => {
-        state.tickets = [...action.payload.tickets]
-        state.stop = action.payload.stop
+      (state, action: PayloadAction<InTicket[]>) => {
+        state.tickets = [...action.payload]
         state.status = 'success'
       }
     )
