@@ -64,7 +64,7 @@
   display: flex;
   /* identical to box height, or 150% */
   align-items: center;
-  color: #4A4A4A;
+  color: $primaryContent;
 
   grid-area: date;
 }
@@ -77,7 +77,7 @@
   display: flex;
   /* identical to box height, or 150% */
   align-items: center;
-  color: #4A4A4A;
+  color: $primaryContent;
 
   grid-area: duration;
 }
@@ -90,8 +90,7 @@
   display: flex;
   /* identical to box height, or 150% */
   align-items: center;
-  color: #4A4A4A;
+  color: $primaryContent;
 
-  /* Frequently Used/Primary Content */
   grid-area: switchesList;
 }

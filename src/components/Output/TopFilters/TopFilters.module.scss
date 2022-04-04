@@ -11,12 +11,12 @@
 
   .item {
     flex-grow: 1;
-    color: #4A4A4A;
+    color: $primaryContent;
 
     &_active {
       color: #FFFFFF;
-      border-color: #2196F3;
-      background: #2196F3;
+      border-color: $primary500;
+      background: $primary500;
     }
   }
 }
