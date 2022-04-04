@@ -14,8 +14,10 @@ const initialState: InTickets = {
 const getTickets = async (reqURL: string): Promise<InTicket[]> => {
   const response = await fetch(reqURL)
   if (!response.ok) {
-    // throw new Error(`${response.status}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
     return getTickets(reqURL)
+  }
+  if (response.status === 404) {
+    throw new Error(`${response.status}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
   }
   const result = await response.json()
   if (result.stop === false) {

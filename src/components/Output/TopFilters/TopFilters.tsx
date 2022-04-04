@@ -6,6 +6,11 @@ import { setFiltersSort } from '../../../reducers/filters'
 import { InSort } from '../../../interfaces/Interfaces'
 
 const StyledToggleButton = styled(ToggleButton)({
+  fontSize: '12px',
+  fontWeight: 400,
+  lineHeight: '20px',
+  letterSpacing: '0.5px',
+
   '&.Mui-selected, &.Mui-selected:hover': {
     color: 'white',
     backgroundColor: '#2196F3'

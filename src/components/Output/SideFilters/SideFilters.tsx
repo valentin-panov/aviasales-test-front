@@ -15,6 +15,13 @@ const StyledCheckbox = styled(Checkbox)({
     color: '#2196F3'
   }
 })
+const StyledFormControlLabel = styled(FormControlLabel)({
+  span: {
+    fontSize: '13px',
+    fontWeight: 400,
+    lineHeight: '20px'
+  }
+})
 
 export default function SideFilters(): ReactElement {
   const dispatch = useDispatch()
@@ -61,7 +68,7 @@ export default function SideFilters(): ReactElement {
     <section className={s.root}>
       <h2 className={s.sideFilters_title}>Количество пересадок</h2>
       <FormGroup>
-        <FormControlLabel
+        <StyledFormControlLabel
           className={s.item}
           control={
             <StyledCheckbox
@@ -74,7 +81,7 @@ export default function SideFilters(): ReactElement {
           }
           label="Все"
         />
-        <FormControlLabel
+        <StyledFormControlLabel
           className={s.item}
           control={
             <StyledCheckbox
@@ -87,7 +94,7 @@ export default function SideFilters(): ReactElement {
           }
           label="Без пересадок"
         />
-        <FormControlLabel
+        <StyledFormControlLabel
           className={s.item}
           control={
             <StyledCheckbox
@@ -100,7 +107,7 @@ export default function SideFilters(): ReactElement {
           }
           label="1 пересадка"
         />
-        <FormControlLabel
+        <StyledFormControlLabel
           className={s.item}
           control={
             <StyledCheckbox
@@ -113,7 +120,7 @@ export default function SideFilters(): ReactElement {
           }
           label="2 пересадки"
         />
-        <FormControlLabel
+        <StyledFormControlLabel
           className={s.item}
           control={
             <StyledCheckbox
