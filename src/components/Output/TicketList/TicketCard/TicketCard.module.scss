@@ -9,7 +9,7 @@
   margin: 0;
   padding: 22px 20px 18px;
   border-radius: 5px;
-  background: #FFFFFF;
+  background: $whiteBg;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 36px 1fr;
@@ -32,7 +32,6 @@
   line-height: 24px;
   color: $primary500;
 
-  /* Primary Colors/Primary 500 */
   grid-area: price;
 }
 

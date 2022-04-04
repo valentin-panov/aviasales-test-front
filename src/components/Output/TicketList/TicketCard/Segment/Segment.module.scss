@@ -20,7 +20,7 @@
   align-items: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #A0B0B9;
+  color: $secondaryContent;
 
   grid-area: route;
 }
@@ -35,7 +35,7 @@
   align-items: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #A0B0B9;
+  color: $secondaryContent;
 
   grid-area: durationTitle;
 }
@@ -50,9 +50,8 @@
   align-items: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  color: #A0B0B9;
+  color: $secondaryContent;
 
-  /* Primary Colors/Secondary Content */
   grid-area: switchesCount;
 }
 

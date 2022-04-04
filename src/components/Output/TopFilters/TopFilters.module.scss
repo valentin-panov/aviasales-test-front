@@ -14,7 +14,7 @@
     color: $primaryContent;
 
     &_active {
-      color: #FFFFFF;
+      color: $whiteColor;
       border-color: $primary500;
       background: $primary500;
     }

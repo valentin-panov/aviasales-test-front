@@ -17,14 +17,14 @@
 
   .sideFilters {
     border-radius: 5px;
-    background: #FFFFFF;
+    background: $whiteBg;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     grid-area: sideFilters;
   }
 
   .topFilters {
     border-radius: 5px;
-    background: #FFFFFF;
+    background: $whiteBg;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     grid-area: topFilters;
   }
