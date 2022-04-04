@@ -1,9 +1,20 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import s from './SideFilters.module.scss'
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material'
+import { Checkbox, FormControlLabel, FormGroup, styled } from '@mui/material'
 import { InFilter } from '../../../interfaces/Interfaces'
 import { useDispatch } from 'react-redux'
 import { setFiltersFilter } from '../../../reducers/filters'
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
+
+const StyledCheckbox = styled(Checkbox)({
+  '&.MuiCheckbox-root, &.MuiCheckbox-root:hover': {
+    color: '#9ABBCE',
+    backgroundColor: 'transparent'
+  },
+  '&.Mui-checked, &.Mui-checked:hover': {
+    color: '#2196F3'
+  }
+})
 
 export default function SideFilters(): ReactElement {
   const dispatch = useDispatch()
@@ -53,11 +64,12 @@ export default function SideFilters(): ReactElement {
         <FormControlLabel
           className={s.item}
           control={
-            <Checkbox
-              size={'small'}
+            <StyledCheckbox
+              size={'medium'}
               checked={all}
               name={'all'}
               onChange={handleChange}
+              checkedIcon={<CheckBoxOutlinedIcon />}
             />
           }
           label="Все"
@@ -65,11 +77,12 @@ export default function SideFilters(): ReactElement {
         <FormControlLabel
           className={s.item}
           control={
-            <Checkbox
-              size={'small'}
+            <StyledCheckbox
+              size={'medium'}
               checked={s0}
               name={'s0'}
               onChange={handleChange}
+              checkedIcon={<CheckBoxOutlinedIcon />}
             />
           }
           label="Без пересадок"
@@ -77,11 +90,12 @@ export default function SideFilters(): ReactElement {
         <FormControlLabel
           className={s.item}
           control={
-            <Checkbox
-              size={'small'}
+            <StyledCheckbox
+              size={'medium'}
               checked={s1}
               name={'s1'}
               onChange={handleChange}
+              checkedIcon={<CheckBoxOutlinedIcon />}
             />
           }
           label="1 пересадка"
@@ -89,11 +103,12 @@ export default function SideFilters(): ReactElement {
         <FormControlLabel
           className={s.item}
           control={
-            <Checkbox
-              size={'small'}
+            <StyledCheckbox
+              size={'medium'}
               checked={s2}
               name={'s2'}
               onChange={handleChange}
+              checkedIcon={<CheckBoxOutlinedIcon />}
             />
           }
           label="2 пересадки"
@@ -101,11 +116,12 @@ export default function SideFilters(): ReactElement {
         <FormControlLabel
           className={s.item}
           control={
-            <Checkbox
-              size={'small'}
+            <StyledCheckbox
+              size={'medium'}
               checked={s3}
               name={'s3'}
               onChange={handleChange}
+              checkedIcon={<CheckBoxOutlinedIcon />}
             />
           }
           label="3 пересадки"

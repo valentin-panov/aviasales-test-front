@@ -1,9 +1,16 @@
 import React, { ReactElement } from 'react'
-import { ToggleButton, ToggleButtonGroup } from '@mui/material'
+import { styled, ToggleButton, ToggleButtonGroup } from '@mui/material'
 import s from './TopFilters.module.scss'
 import { useDispatch } from 'react-redux'
 import { setFiltersSort } from '../../../reducers/filters'
 import { InSort } from '../../../interfaces/Interfaces'
+
+const StyledToggleButton = styled(ToggleButton)({
+  '&.Mui-selected, &.Mui-selected:hover': {
+    color: 'white',
+    backgroundColor: '#2196F3'
+  }
+})
 
 export default function TopFilters(): ReactElement {
   const dispatch = useDispatch()
@@ -26,15 +33,15 @@ export default function TopFilters(): ReactElement {
       exclusive
       onChange={handleChange}
     >
-      <ToggleButton className={s.item} value="price">
+      <StyledToggleButton className={s.item} value="price">
         Самый дешевый
-      </ToggleButton>
-      <ToggleButton className={s.item} value="time">
+      </StyledToggleButton>
+      <StyledToggleButton className={s.item} value="time">
         Самый быстрый
-      </ToggleButton>
-      <ToggleButton className={s.item} value="optimal">
+      </StyledToggleButton>
+      <StyledToggleButton className={s.item} value="optimal">
         Оптимальный
-      </ToggleButton>
+      </StyledToggleButton>
     </ToggleButtonGroup>
   )
 }
