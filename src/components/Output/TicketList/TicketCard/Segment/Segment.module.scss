@@ -1,95 +1,58 @@
 @import 'src/styles/common';
 
 .root {
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas:
-'route durationTitle switchesCount'
-'date duration switchesList';
-}
-
-
-.route {
   font-size: 12px;
   font-weight: 600;
   font-style: normal;
   line-height: 18px;
-  display: flex;
-  /* identical to box height, or 150% */
+  display: grid;
   align-items: center;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: start;
+  grid-template-areas:
+    'route durationTitle switchesCount'
+    'date duration switchesList';
+}
+
+.route {
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: $secondaryContent;
-
   grid-area: route;
 }
 
 .durationTitle {
-  font-size: 12px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 18px;
-  display: flex;
-  /* identical to box height, or 150% */
-  align-items: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: $secondaryContent;
-
   grid-area: durationTitle;
 }
 
 .switchesCount {
-  font-size: 12px;
-  font-weight: 600;
-  font-style: normal;
-  line-height: 18px;
-  display: flex;
-  /* identical to box height, or 150% */
-  align-items: center;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   color: $secondaryContent;
-
   grid-area: switchesCount;
 }
 
 .date {
   font-size: 14px;
-  font-weight: 600;
-  font-style: normal;
   line-height: 21px;
-  display: flex;
-  /* identical to box height, or 150% */
-  align-items: center;
   color: $primaryContent;
-
   grid-area: date;
 }
 
 .duration {
   font-size: 14px;
-  font-weight: 600;
-  font-style: normal;
   line-height: 21px;
-  display: flex;
-  /* identical to box height, or 150% */
-  align-items: center;
   color: $primaryContent;
-
   grid-area: duration;
 }
 
 .switchesList {
   font-size: 14px;
-  font-weight: 600;
-  font-style: normal;
   line-height: 21px;
-  display: flex;
-  /* identical to box height, or 150% */
-  align-items: center;
   color: $primaryContent;
-
   grid-area: switchesList;
 }
