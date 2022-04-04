@@ -17,16 +17,18 @@ export const Segment = memo<Props>(({ className, segment }) => {
   const { date, duration, origin, stops, destination } = segment
   return (
     <div className={cn(s.root, className)}>
-      <div className={s.route}>
+      <div className={cn(s.upperRow, s.route)}>
         {origin} – {destination}
       </div>
-      <div className={s.date}>{getBeautifulDateInTimeFromString(date)}</div>
-      <div className={s.durationTitle}>В пути</div>
-      <div className={s.duration}>{min2mmhh(duration)}</div>
-      <div className={s.switchesCount}>
+      <div className={cn(s.lowerRow, s.date)}>
+        {getBeautifulDateInTimeFromString(date)}
+      </div>
+      <div className={cn(s.upperRow, s.durationTitle)}>В пути</div>
+      <div className={cn(s.lowerRow, s.duration)}>{min2mmhh(duration)}</div>
+      <div className={cn(s.upperRow, s.switchesCount)}>
         {stops.length > 0 ? declOfSwitches(stops.length) : 'Прямой'}
       </div>
-      <div className={s.switchesList}>
+      <div className={cn(s.lowerRow, s.switchesList)}>
         {stops.length > 0 && stops.join(', ')}
       </div>
     </div>
