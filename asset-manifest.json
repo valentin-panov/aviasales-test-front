@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/aviasales-test-front/static/css/main.1088bc20.chunk.css",
+    "main.js": "/aviasales-test-front/static/js/main.7874364e.chunk.js",
+    "runtime-main.js": "/aviasales-test-front/static/js/runtime-main.ac3f400c.js",
+    "static/js/2.95af3d8c.chunk.js": "/aviasales-test-front/static/js/2.95af3d8c.chunk.js",
+    "index.html": "/aviasales-test-front/index.html",
+    "static/js/2.95af3d8c.chunk.js.LICENSE.txt": "/aviasales-test-front/static/js/2.95af3d8c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ac3f400c.js",
+    "static/js/2.95af3d8c.chunk.js",
+    "static/css/main.1088bc20.chunk.css",
+    "static/js/main.7874364e.chunk.js"
+  ]
+}
