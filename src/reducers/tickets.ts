@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
 
 // Core
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit' // Interfaces
-import {InTicket, InTickets} from '../interfaces/Interfaces' // Server
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {InTicket, InTickets} from '../interfaces/Interfaces'
 import {serverURL} from '../App'
 
 const initialState: InTickets = {
@@ -17,7 +17,8 @@ const getTickets = async (reqURL: string): Promise<InTicket[]> => {
     return getTickets(reqURL)
   }
   if (response.status === 404) {
-    throw new Error(`${response.status}`) // Если нужно показывать ошибку получения данных - нужно выбрасывать ошибку
+      // можно добавить кодов ошибок, если знать, что может прилететь с бэка
+    throw new Error(`${response.status}`)
   }
   const result = await response.json()
   if (result.stop === false) {
