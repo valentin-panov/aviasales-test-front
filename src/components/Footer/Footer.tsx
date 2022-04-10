@@ -9,7 +9,7 @@ export type Props = {
 export const Footer = memo<Props>(({ className }) => (
   <footer className={cn(s.root, className)}>
     <a href={'https://www.linkedin.com/in/valentin-panov/'} className={s.link}>
-      Valentin Panov, Mar 2022
+      Linkedin Valentin Panov
     </a>
   </footer>
 ))
