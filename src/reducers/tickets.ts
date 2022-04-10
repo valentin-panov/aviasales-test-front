@@ -17,7 +17,7 @@ const getTickets = async (reqURL: string): Promise<InTicket[]> => {
     return getTickets(reqURL)
   }
   if (response.status === 404) {
-      // можно добавить кодов ошибок, если знать, что может прилететь с бэка
+    // можно добавить кодов ошибок, если знать, что может прилететь с бэка
     throw new Error(`${response.status}`)
   }
   const result = await response.json()
